@@ -1,0 +1,286 @@
+$amazon-dark: #131921;
+$amazon-orange: #cd9042;
+$amazon-yellow: #f0c14b;
+$clr-white: rgb(245, 245, 245);
+$clr-light-gray: #f3f3f3;
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: rgb(234, 237, 237);
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: $amazon-dark;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__logo {
+    width: 100px;
+    object-fit: contain;
+    margin: 0 20px;
+    margin-top: 18px;
+  }
+
+  &__search {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  &__searchInput {
+    height: 14px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+  }
+
+  &__searchIcon {
+    padding: 5px;
+    background-color: $amazon-orange;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    color: $clr-white;
+  }
+
+  &__optionLineOne {
+    font-size: 11px;
+  }
+
+  &__optionLineTwo {
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  &__optionLineTwo--orange {
+    color: $amazon-orange;
+  }
+
+  &__optionBasket {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 10px;
+    color: $clr-white;
+  }
+
+  a {
+    align-self: flex-end;
+    margin-bottom: 2px;
+  }
+}
+
+.home {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1500px;
+  }
+
+  &__row {
+    display: flex;
+    flex: 1;
+    margin: 0 5px;
+  }
+
+  &__image {
+    width: 100%;
+    z-index: -1;
+    margin-bottom: -150px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+
+  img {
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+
+  &__info {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  &__price {
+    margin-top: 5px;
+  }
+}
+
+.button {
+  border: 1px solid;
+  margin-top: 10px;
+  color: $amazon-dark;
+}
+
+.button--orange {
+  background-color: $amazon-orange;
+}
+
+.button--yellow {
+  background-color: $amazon-yellow;
+}
+
+.checkout {
+  display: flex;
+  padding: 20px;
+  background-color: white;
+  height: max-content;
+
+  &__ad {
+    width: 100%;
+  }
+
+  &__title {
+    margin-right: 10px;
+    padding: 10px;
+    border-bottom: 1px solid $clr-light-gray;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  background-color: $clr-light-gray;
+  border: #dddddd;
+  border-radius: 3px;
+
+  &__button {
+    padding: 5px;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  &__gift {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}
+
+.checkoutProduct {
+  display: flex;
+  margin: 20px 0;
+
+  &__image {
+    width: 50%;
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  &__price {
+    margin: 5px 0 10px;
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+
+  &__container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 20px;
+  }
+
+  h5,
+  h1,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h5 {
+    margin-bottom: 5px;
+  }
+
+  input {
+    margin-bottom: 10px;
+    width: 98%;
+    height: 30px;
+  }
+
+  p {
+    margin: 15px 0 5px;
+    font-size: 12px;
+  }
+
+  &__signInButton {
+    border-radius: 2px;
+    height: 30px;
+    width: 100%;
+  }
+
+  &__registerButton {
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    border: 1px solid darkgray;
+    background-color: rgb(236, 236, 236);
+  }
+
+  &__logo {
+    margin: 20px 0;
+    width: 150px;
+    object-fit: contain;
+  }
+}
