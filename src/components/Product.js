@@ -23,11 +23,19 @@ function Product({ id, title, price, rating, image }) {
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
-          <small>$</small>
+          <small>$ </small>
           <strong>{price}</strong>
         </p>
         <div className="product__rating">
-          <Rating name="read-only" value={rating} precision={0.5} readOnly />
+          <Rating
+            name="read-only"
+            value={rating.rate}
+            precision={0.1}
+            readOnly
+          />
+          <small>
+            (<b>{rating.rate}</b> out of {rating.count})
+          </small>
         </div>
       </div>
       <img src={image} alt="" />

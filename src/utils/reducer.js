@@ -17,27 +17,12 @@ const reducer = (state, action) => {
       }
 
     case "REMOVE_FROM_BASKET":
-      // const index = state.basket.findIndex((item) => item.id === action.id)
-      // let newBasket = [...state.basket]
-
-      // if (index >= 0) {
-      //   newBasket.splice(index, 1)
-      // } else {
-      //   console.warn(
-      //     `can't remove the product (id: ${action.id}) as it is not in the basket`
-      //   )
-      // }
-
-      // return {
-      //   ...state,
-      //   newBasket,
-      // }
       return {
         ...state,
         basket: state.basket.filter((item) => item.id !== action.id),
       }
 
-    case "ADD_USER":
+    case "SET_USER":
       return {
         ...state,
         user: action.user,
