@@ -152,6 +152,23 @@ button {
   border: 1px solid;
   margin-top: 10px;
   color: $amazon-dark;
+
+  &--add,
+  &--remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: $amazon-yellow;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+
+  &--add:active,
+  &--remove:active {
+    background-color: $amazon-orange;
+  }
 }
 
 .button--orange {
@@ -231,6 +248,18 @@ button {
 
   &__price {
     margin: 5px 0 10px;
+  }
+
+  &__amount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--span {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 20px;
+    }
   }
 }
 
@@ -330,5 +359,40 @@ button {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.payment {
+  background-color: white;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 0;
+    background-color: $clr-light-gray;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 20px;
+    margin: 0 20px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &__items {
+    .checkoutProduct {
+      margin: 0 0 20px;
+    }
   }
 }

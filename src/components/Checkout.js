@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useStateValue } from "../utils/StateProvider"
 import CheckoutProduct from "./CheckoutProduct"
 import Subtotal from "./Subtotal"
@@ -6,21 +6,19 @@ import Subtotal from "./Subtotal"
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue()
 
-  console.log("basket", basket)
-
   const arrayUniqueByKey = [
     ...new Map(basket.map((item) => [item.id, item])).values(),
   ]
 
-  let arr = []
+  let arrayOfDifferentItems = []
   for (let i = 0; i < arrayUniqueByKey.length; i++) {
     const count = basket.filter(
       (obj) => obj.id === arrayUniqueByKey[i].id
     ).length
-    arr.push(count)
+    arrayOfDifferentItems.push(count)
   }
 
-  console.log("arr", arr)
+  console.log("arr", arrayOfDifferentItems)
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -38,7 +36,7 @@ function Checkout() {
             const { id, title, image, price, rating } = item
             return (
               <CheckoutProduct
-                amount={arr[index]}
+                amount={arrayOfDifferentItems[index]}
                 key={id}
                 id={id}
                 title={title}
