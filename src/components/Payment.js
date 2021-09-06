@@ -1,13 +1,30 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { useStateValue } from "../utils/StateProvider"
 import CheckoutProduct from "./CheckoutProduct"
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue()
 
+  const arrayUniqueByKey = [
+    ...new Map(basket.map((item) => [item.id, item])).values(),
+  ]
+
+  let arrayOfDifferentItems = []
+  for (let i = 0; i < arrayUniqueByKey.length; i++) {
+    const count = basket.filter(
+      (obj) => obj.id === arrayUniqueByKey[i].id
+    ).length
+    arrayOfDifferentItems.push(count)
+  }
+
   return (
     <div className="payment">
       <div className="payment__container">
+        <h1>
+          Checkout (<Link to="/checkout">{basket?.length} items</Link>)
+        </h1>
+
         <div className="payment__section">
           <div className="payment__title">
             <h3>Delivery Address</h3>
@@ -24,10 +41,11 @@ function Payment() {
             <h3>Review Items and Delivery</h3>
           </div>
           <div className="payment__items">
-            {basket.map((item) => {
+            {arrayUniqueByKey.map((item, index) => {
               const { id, title, image, price, rating } = item
               return (
                 <CheckoutProduct
+                  amount={arrayOfDifferentItems[index]}
                   key={id}
                   id={id}
                   title={title}
@@ -40,7 +58,12 @@ function Payment() {
           </div>
         </div>
 
-        <div className="payment__section"></div>
+        <div className="payment__section">
+          <div className="payment__title">
+            <h3>Payment method</h3>
+          </div>
+          <div className="payment__details">{/* stripe method */}</div>
+        </div>
       </div>
     </div>
   )
