@@ -2,18 +2,21 @@ import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from "../services/firebase"
 
-function Login() {
+function Signup() {
   let history = useHistory()
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const signIn = (e) => {
+  const register = (e) => {
     e.preventDefault()
 
     auth
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
-        history.push("/")
+        if (userCredentials) {
+          history.push("/")
+        }
       })
       .catch((error) => alert(error.message))
   }
@@ -29,8 +32,16 @@ function Login() {
       </Link>
 
       <div className="authentication__container">
-        <h1 className="authentication__title">Sign-in</h1>
+        <h1 className="authentication__title">Create new account</h1>
         <form>
+          <h5 className="authentication__label">Name</h5>
+          <input
+            className="authentication__input"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
           <h5 className="authentication__label">E-mail</h5>
           <input
             className="authentication__input"
@@ -50,9 +61,9 @@ function Login() {
           <button
             className="button--yellow authentication__button"
             type="submit"
-            onClick={signIn}
+            onClick={register}
           >
-            Sign In
+            Create your Amazon Account
           </button>
 
           <small className="authentication__terms">
@@ -61,8 +72,8 @@ function Login() {
           </small>
 
           <p className="authentication__text">
-            Don't have an account?
-            <Link to="/signup">Sign-up</Link>
+            Already have an account?
+            <Link to="/login">Login</Link>
           </p>
         </form>
       </div>
@@ -70,4 +81,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Signup

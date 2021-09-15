@@ -4,7 +4,7 @@ import { useStateValue } from "../utils/StateProvider"
 import CheckoutProduct from "./CheckoutProduct"
 
 function Payment() {
-  const [{ basket, user }, dispatch] = useStateValue()
+  const [{ basket, user }, dispatch] = useStateValue([])
 
   const arrayUniqueByKey = [
     ...new Map(basket.map((item) => [item.id, item])).values(),
@@ -21,12 +21,12 @@ function Payment() {
   return (
     <div className="payment">
       <div className="payment__container">
-        <h1>
+        <h1 className="payment__title">
           Checkout (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
 
         <div className="payment__section">
-          <div className="payment__title">
+          <div className="payment__sectionTitle">
             <h3>Delivery Address</h3>
           </div>
           <div className="payment__address">
@@ -37,7 +37,7 @@ function Payment() {
         </div>
 
         <div className="payment__section">
-          <div className="payment__title">
+          <div className="payment__sectionTitle">
             <h3>Review Items and Delivery</h3>
           </div>
           <div className="payment__items">
@@ -59,7 +59,7 @@ function Payment() {
         </div>
 
         <div className="payment__section">
-          <div className="payment__title">
+          <div className="payment__sectionTitle">
             <h3>Payment method</h3>
           </div>
           <div className="payment__details">{/* stripe method */}</div>

@@ -7,7 +7,7 @@ import { useStateValue } from "../utils/StateProvider"
 import { auth } from "../services/firebase"
 
 function Header() {
-  const [{ basket, user }, dispatch] = useStateValue()
+  const [{ basket, user }, dispatch] = useStateValue([])
 
   const handleAuthentication = () => {
     if (user) {

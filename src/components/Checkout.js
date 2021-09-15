@@ -4,7 +4,7 @@ import CheckoutProduct from "./CheckoutProduct"
 import Subtotal from "./Subtotal"
 
 function Checkout() {
-  const [{ basket, user }, dispatch] = useStateValue()
+  const [{ basket, user }, dispatch] = useStateValue([])
 
   const arrayUniqueByKey = [
     ...new Map(basket.map((item) => [item.id, item])).values(),
@@ -18,7 +18,6 @@ function Checkout() {
     arrayOfDifferentItems.push(count)
   }
 
-  console.log("arr", arrayOfDifferentItems)
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -29,7 +28,7 @@ function Checkout() {
         />
 
         <div>
-          <h3>Hello, {user?.email}</h3>
+          <h3 className="checkout__greeting">Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your Shopping Basket</h2>
 
           {arrayUniqueByKey.map((item, index) => {

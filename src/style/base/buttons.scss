@@ -1,0 +1,38 @@
+.button {
+  border: 1px solid;
+  margin-top: 10px;
+  color: $amazon-dark;
+
+  &--add,
+  &--remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: $amazon-yellow;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+
+  &--add:active,
+  &--remove:active {
+    background-color: $amazon-orange;
+  }
+}
+
+.button--orange {
+  background-color: $amazon-orange-light;
+}
+
+.button--orange:hover {
+  background-color: $amazon-orange;
+}
+
+.button--yellow {
+  background: linear-gradient(to bottom, #f6db96, $amazon-yellow);
+}
+
+.button--yellow:hover {
+  background: linear-gradient(to bottom, $amazon-yellow, $amazon-orange);
+}
