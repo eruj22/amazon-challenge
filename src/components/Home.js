@@ -1,5 +1,6 @@
 import React from "react"
 import Product from "./Product"
+import image from "../assets/background-image.jpg"
 
 function Home({ data }) {
   return (
@@ -7,8 +8,8 @@ function Home({ data }) {
       <div className="home__container">
         <img
           className="home__image"
-          src="https://images-na.ssl-images-amazon.com/images/G/01/adlp/builder/BFF-V1-01-Hero-T-59d56e74-90ad-47d3-b893-5d1b6665011b._CB417386572_.jpg"
-          alt=""
+          src={image}
+          alt="add for prime video, watch party in beta"
         />
 
         <div className="home__row">

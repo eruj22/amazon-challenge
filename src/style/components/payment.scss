@@ -1,0 +1,30 @@
+.payment {
+  background-color: white;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin-top: 0;
+    background-color: $clr-light-gray;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 20px;
+    margin: 0 20px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  &__items {
+    .checkoutProduct {
+      margin: 0 0 20px;
+    }
+  }
+}

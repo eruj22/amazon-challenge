@@ -5,7 +5,7 @@ import { GrAdd } from "react-icons/gr"
 import { MdRemove } from "react-icons/md"
 
 function CheckoutProduct({ id, image, title, price, rating, amount }) {
-  const [state, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue([])
 
   const removeFromBasket = () => {
     dispatch({

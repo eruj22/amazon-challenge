@@ -3,7 +3,7 @@ import Rating from "@material-ui/lab/Rating"
 import { useStateValue } from "../utils/StateProvider"
 
 function Product({ id, title, price, rating, image }) {
-  const [state, dispatch] = useStateValue()
+  const [state, dispatch] = useStateValue([])
 
   const addToBasket = () => {
     dispatch({
@@ -38,7 +38,7 @@ function Product({ id, title, price, rating, image }) {
           </small>
         </div>
       </div>
-      <img src={image} alt="" />
+      <img className="product__image" src={image} alt="" />
       <button className="button button--orange" onClick={addToBasket}>
         Add to basket
       </button>
