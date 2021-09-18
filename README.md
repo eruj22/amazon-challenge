@@ -1,5 +1,7 @@
 # Fake Amazon
 
+![amazon](https://user-images.githubusercontent.com/80893722/133887786-e442ab85-e8be-4316-a254-1a9a3b21c37a.png)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
