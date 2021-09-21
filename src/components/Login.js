@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { auth } from "../services/firebase"
+import { useStateValue } from "../utils/StateProvider"
 
 function Login() {
   let history = useHistory()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  // eslint-disable-next-line no-unused-vars
+  const [{ basket }, dispatch] = useStateValue([])
 
   const signIn = (e) => {
     e.preventDefault()
@@ -13,7 +16,11 @@ function Login() {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
-        history.push("/")
+        if (basket.length > 0) {
+          history.push("/basket")
+        } else {
+          history.push("/")
+        }
       })
       .catch((error) => alert(error.message))
   }

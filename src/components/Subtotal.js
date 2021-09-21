@@ -3,29 +3,45 @@ import { currencyFormat } from "../utils/helpers"
 import { getBasketTotal } from "../utils/reducer"
 import { useStateValue } from "../utils/StateProvider"
 import { useHistory } from "react-router-dom"
+import toast, { Toaster } from "react-hot-toast"
 
 function Subtotal() {
   let history = useHistory()
-  const [state, dispatch] = useStateValue([])
-  const { basket } = state
+  // eslint-disable-next-line no-unused-vars
+  const [{ basket, user }, dispatch] = useStateValue([])
+
+  const onCLickGoToCheckout = (e) => {
+    if (basket.length > 0) {
+      history.push("/checkout")
+    } else if (basket.length === 0) {
+      toast.error("Add items to continue")
+    }
+
+    if (!user) {
+      history.push("/login")
+    }
+  }
 
   return (
-    <div className="subtotal">
-      <p>
-        Subtotal ({basket.length} items):{" "}
-        <strong>$ {currencyFormat(getBasketTotal(basket))}</strong>
-      </p>
-      <div className="subtotal__gift">
-        <input type="checkbox" />
-        <small>This order contains a gift</small>
+    <>
+      <Toaster />
+      <div className="subtotal">
+        <p>
+          Subtotal ({basket.length} items):{" "}
+          <strong>$ {currencyFormat(getBasketTotal(basket))}</strong>
+        </p>
+        <div className="subtotal__gift">
+          <input type="checkbox" />
+          <small>This order contains a gift</small>
+        </div>
+        <button
+          className="button button--yellow subtotal__button"
+          onClick={onCLickGoToCheckout}
+        >
+          Proceed to Checkout
+        </button>
       </div>
-      <button
-        className="button button--yellow subtotal__button"
-        onClick={(e) => history.push("/payment")}
-      >
-        Proceed to Checkout
-      </button>
-    </div>
+    </>
   )
 }
 

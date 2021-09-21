@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react"
 import Header from "./components/Header"
 import Home from "./components/Home"
-import Checkout from "./components/Checkout"
+import Basket from "./components/Basket"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Login from "./components/Login"
 import { auth } from "./services/firebase"
 import { useStateValue } from "./utils/StateProvider"
-import Payment from "./components/Payment"
+import Checkout from "./components/Checkout"
 import Signup from "./components/Signup"
 import Footer from "./components/Footer"
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useStateValue()
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -18,8 +19,12 @@ function App() {
   const fetchData = () => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((json) => setData(json))
-    setIsLoading(false)
+      .then((json) => {
+        setData(json)
+        // if (data) {
+        // }
+        setIsLoading(false)
+      })
   }
 
   useEffect(() => {
@@ -41,14 +46,6 @@ function App() {
     // eslint-disable-next-line
   }, [])
 
-  if (isLoading) {
-    return (
-      <div className="loader__container">
-        <div className="loader"></div>
-      </div>
-    )
-  }
-
   return (
     <Router>
       <div>
@@ -59,17 +56,17 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
+          <Route path="/basket">
+            <Header />
+            <Basket />
+          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
           </Route>
-          <Route path="/payment">
-            <Header />
-            <Payment />
-          </Route>
           <Route path="/">
             <Header />
-            <Home data={data} />
+            <Home data={data} isLoading={isLoading} />
             <Footer />
           </Route>
         </Switch>

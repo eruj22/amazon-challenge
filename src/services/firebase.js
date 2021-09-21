@@ -1,4 +1,7 @@
-import firebase from "firebase"
+/* eslint-disable no-unused-vars */
+import firebase from "firebase/app"
+import firestore from "firebase/firestore"
+import auth from "firebase/auth"
 
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyB_wL9XegPNk5WbmpLWGNT2X-SModtjMCQ",
@@ -10,6 +13,6 @@ const firebaseApp = firebase.initializeApp({
 })
 
 const db = firebaseApp.firestore()
-const auth = firebase.auth()
+const authentication = firebase.auth()
 
-export { db, auth }
+export { db, authentication as auth }

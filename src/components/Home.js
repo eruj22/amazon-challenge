@@ -1,8 +1,13 @@
 import React from "react"
 import Product from "./Product"
 import image from "../assets/background-image.jpg"
+import Loader from "./Loader"
 
-function Home({ data }) {
+function Home({ data, isLoading }) {
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <div className="home">
       <div className="home__container">

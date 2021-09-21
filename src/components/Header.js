@@ -7,6 +7,7 @@ import { useStateValue } from "../utils/StateProvider"
 import { auth } from "../services/firebase"
 
 function Header() {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket, user }, dispatch] = useStateValue([])
 
   const handleAuthentication = () => {
@@ -27,7 +28,7 @@ function Header() {
       </div>
 
       <div className="header__nav">
-        <Link to={!user && "/login"}>
+        <Link to={user ? "#" : "/login"}>
           <div className="header__option" onClick={handleAuthentication}>
             <span className="header__optionLineOne">
               {user ? `Hello ${user.email}` : "Hello Guest"}
@@ -48,7 +49,7 @@ function Header() {
           <span className="header__optionLineTwo">Prime</span>
         </div>
 
-        <Link to="/checkout">
+        <Link to="/basket">
           <div className="header__optionBasket">
             <ShoppingCartIcon />
             <span className="header__optionLineTwo header__optionLineTwo--orange">

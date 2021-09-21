@@ -1,9 +1,11 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { useStateValue } from "../utils/StateProvider"
-import CheckoutProduct from "./CheckoutProduct"
-import Subtotal from "./Subtotal"
+import Product from "./Product"
+import KeyboardBackspace from "@material-ui/icons/KeyboardBackspace"
 
 function Checkout() {
+  // eslint-disable-next-line no-unused-vars
   const [{ basket, user }, dispatch] = useStateValue([])
 
   const arrayUniqueByKey = [
@@ -19,37 +21,55 @@ function Checkout() {
   }
 
   return (
-    <div className="checkout">
-      <div className="checkout__left">
-        <img
-          className="checkout__ad"
-          src="https://images-na.ssl-images-amazon.com/images/G/01/marketing/prime/associates/VXD168-evergreenAssociateAds-lifestyle-assoc-728x90"
-          alt=""
-        />
+    <div className="payment">
+      <div className="payment__container">
+        <h1 className="payment__title">
+          <Link className="payment__goBack" to="/basket">
+            <KeyboardBackspace /> Basket
+          </Link>
+          ({basket?.length} items)
+        </h1>
 
-        <div>
-          <h3 className="checkout__greeting">Hello, {user?.email}</h3>
-          <h2 className="checkout__title">Your Shopping Basket</h2>
-
-          {arrayUniqueByKey.map((item, index) => {
-            const { id, title, image, price, rating } = item
-            return (
-              <CheckoutProduct
-                amount={arrayOfDifferentItems[index]}
-                key={id}
-                id={id}
-                title={title}
-                image={image}
-                price={price}
-                rating={rating}
-              />
-            )
-          })}
+        <div className="payment__section">
+          <div className="payment__sectionTitle">
+            <h3>Delivery Address</h3>
+          </div>
+          <div className="payment__address">
+            <p>{user?.email}</p>
+            <p>street number</p>
+            <p>city</p>
+          </div>
         </div>
-      </div>
 
-      <div className="checkout__right">
-        <Subtotal />
+        <div className="payment__section">
+          <div className="payment__sectionTitle">
+            <h3>Review Items and Delivery</h3>
+          </div>
+          <div className="payment__items">
+            {arrayUniqueByKey.map((item, index) => {
+              const { id, title, image, price, rating } = item
+              return (
+                <Product
+                  amount={arrayOfDifferentItems[index]}
+                  key={id}
+                  id={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  rating={rating}
+                  product={"checkout"}
+                />
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="payment__section">
+          <div className="payment__sectionTitle">
+            <h3>Payment method</h3>
+          </div>
+          <div className="payment__details">{/* stripe method */}</div>
+        </div>
       </div>
     </div>
   )

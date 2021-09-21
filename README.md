@@ -38,14 +38,16 @@ The project is build with these technologies:
 - React Router
 - Material UI
 - Firebase
+- React Hot Toast
+- React Content Loader
 
 ### Possible improvements
 
 The app can be improved in a few ways:
 
-- added Stripe payment
-- displaying more details about desired product in a separate page
-- improving checkout design and getting user's delivery address
+- add Stripe payment
+- display more details about desired product in a separate page
+- improve checkout design and getting user's delivery address
 
 <!-- GETTING STARTED -->
 
@@ -67,7 +69,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```sh
-git clone https://github.com/eruj22/color-generator
+git clone https://github.com/eruj22/amazon-challenge
 ```
 
 2. Install NPM packages
